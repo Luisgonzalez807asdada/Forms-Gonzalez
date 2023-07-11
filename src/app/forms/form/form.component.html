@@ -1,0 +1,25 @@
+<main>
+    <form [formGroup]="userModel">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Direccion de correo electronico</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span *ngIf="this.userModel.get('email')?.errors?.['required']">(El mail no puede quedar vacio)</span>
+            <span *ngIf="this.userModel.get('email')?.errors?.['email']">(El mail no es valido)</span>
+            <div id="emailHelp" class="form-text">No compartiremos su correo electronico con nadie mas.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Controlar</label>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="submitForm()">Enviar</button>
+        <div>
+            <h6>Valor</h6>
+            <pre>{{ userModel.value | json }}</pre>
+        </div>
+    </form>
+
+</main>
